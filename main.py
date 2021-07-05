@@ -53,10 +53,8 @@ def test_agent():
         steps += 1
         action = agent.max_action(state)
         state_, reward, done, _ = env.step(action)
-        print(state, action, state_, reward)
         state = state_
         score += reward
-    print('\n\n\n')
     return np.mean(score)
 
 
