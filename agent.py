@@ -28,5 +28,9 @@ class Agent:
         self.Q[s][a] = self.Q[s][a] + (self.alpha * ((r + self.gamma * np.max(self.Q[s_])) - self.Q[s][a]))
         self.decay_eps()
 
+    def learn(self, s, a, r, s_, a_):
+        self.Q[s][a] = self.Q[s][a] + (self.alpha * ((r + self.gamma * self.Q[s_][a_]) - self.Q[s][a]))
+        self.decay_eps()
+
     def decay_eps(self):
         self.eps = self.eps * self.eps_decay if self.eps > self.eps_min else self.eps_min
